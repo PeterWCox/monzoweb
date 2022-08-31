@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import reducer from './reducers';
 import saga from './sagas';
-import Root from './components/Root';
+import { Root } from './components/Root/Root';
 import './style.css';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -20,8 +20,10 @@ const store = createStore(
 
 sagaMiddleware.run(saga);
 
-class App extends React.PureComponent {
-  render() {
+class App extends React.PureComponent
+{
+  render()
+  {
     return (
       <Provider store={store}>
         <Router>
