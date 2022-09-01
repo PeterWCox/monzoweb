@@ -9,6 +9,7 @@ import reducer from './reducers';
 import saga from './sagas';
 import { Root } from './components/Root/Root';
 import './style.css';
+import { createRoot } from 'react-dom/client';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -20,18 +21,17 @@ const store = createStore(
 
 sagaMiddleware.run(saga);
 
-class App extends React.PureComponent
+const App = () =>
 {
-  render()
-  {
-    return (
-      <Provider store={store}>
-        <Router>
-          <Root />
-        </Router>
-      </Provider>
-    );
-  }
+  return (
+    <Provider store={store}>
+      <Router>
+        <Root />
+      </Router>
+    </Provider>
+  );
 }
 
-ReactDOM.render(<App />, document.getElementById('mzw'));
+const container = document.getElementById('mzw');
+const root = createRoot(container);
+root.render(<App />)
