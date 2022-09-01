@@ -2,29 +2,36 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setActiveTransaction as setActiveTransactionAction } from '../../actions';
-import CategoryIcon from '../CategoryIcon';
-import {
+import CategoryIcon from '../CategoryIcon/CategoryIcon';
+import
+{
   getHumanCostFromInteger,
   timeSince,
   processTransactionTitle,
   processTransactionAmount,
 } from '../../helpers';
-import './style.css';
+import './Transaction.css';
 
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions,jsx-a11y/no-noninteractive-tabindex,max-len  */
 
-class Transaction extends React.PureComponent {
-  processTransactionLocalAmount(transaction) {
-    if (transaction.local_currency !== transaction.currency) {
+class Transaction extends React.PureComponent
+{
+  processTransactionLocalAmount(transaction)
+  {
+    if (transaction.local_currency !== transaction.currency)
+    {
       return getHumanCostFromInteger(transaction.local_amount, transaction.local_currency);
     }
 
     return false;
   }
 
-  processTransactionCategory(transaction) {
-    if (transaction.category) {
-      if (transaction.category === 'mondo' || transaction.category === 'monzo') {
+  processTransactionCategory(transaction)
+  {
+    if (transaction.category)
+    {
+      if (transaction.category === 'mondo' || transaction.category === 'monzo')
+      {
         return '';
       }
 
@@ -34,16 +41,21 @@ class Transaction extends React.PureComponent {
     return 'general';
   }
 
-  processTransactionExtraInfo(transaction) {
-    if (transaction.metadata && transaction.metadata.faster_payment) {
+  processTransactionExtraInfo(transaction)
+  {
+    if (transaction.metadata && transaction.metadata.faster_payment)
+    {
       return 'Bank transfer';
     }
 
-    if (transaction.merchant) {
-      if (transaction.merchant.online) {
+    if (transaction.merchant)
+    {
+      if (transaction.merchant.online)
+      {
         return 'Online';
       }
-      if (transaction.merchant.address && transaction.merchant.address.city) {
+      if (transaction.merchant.address && transaction.merchant.address.city)
+      {
         return transaction.merchant.address.city;
       }
     }
@@ -51,7 +63,8 @@ class Transaction extends React.PureComponent {
     return '';
   }
 
-  render() {
+  render()
+  {
     const { transaction, setActiveTransaction } = this.props;
     const title = processTransactionTitle(transaction);
     const amount = processTransactionAmount(transaction);
@@ -60,8 +73,10 @@ class Transaction extends React.PureComponent {
     const transactionLogoClassName = 'mzw-transaction__logo';
     let iconOrLogo = <CategoryIcon className={transactionLogoClassName} />;
 
-    if (transaction.merchant) {
-      if (transaction.merchant.logo) {
+    if (transaction.merchant)
+    {
+      if (transaction.merchant.logo)
+      {
         iconOrLogo = (
           <img
             className={transactionLogoClassName}
@@ -69,7 +84,8 @@ class Transaction extends React.PureComponent {
             alt={`${transaction.merchant.name} logo`}
           />
         );
-      } else if (transaction.merchant.category) {
+      } else if (transaction.merchant.category)
+      {
         iconOrLogo = (
           <CategoryIcon
             className={transactionLogoClassName}
@@ -77,14 +93,16 @@ class Transaction extends React.PureComponent {
           />
         );
       }
-    } else if (transaction.counterparty && transaction.counterparty.name) {
+    } else if (transaction.counterparty && transaction.counterparty.name)
+    {
       iconOrLogo = (
         <CategoryIcon
           className={transactionLogoClassName}
           character={transaction.counterparty.name.charAt(0)}
         />
       );
-    } else if (transaction.is_load) {
+    } else if (transaction.is_load)
+    {
       iconOrLogo = (
         <CategoryIcon
           className={transactionLogoClassName}

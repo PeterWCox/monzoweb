@@ -2,26 +2,31 @@ import React from 'react';
 import { Link as RRLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Link from '../Link';
-import CategoryIcon from '../CategoryIcon';
-import Chip from '../Chip';
-import {
+import Link from '../Link/Link';
+import CategoryIcon from '../CategoryIcon/CategoryIcon';
+import Chip from '../Chip/Chip';
+import
+{
   getDeclineTranslation,
   processTransactionTitle,
   processTransactionAmount,
   getHumanCostFromInteger,
 } from '../../helpers';
-import './style.css';
+import './TransactionDetail.css';
+
+//
 
 
 /* eslint-disable react/prop-types */
 
-const TransactionDetailMap = (props) => {
+const TransactionDetailMap = (props) =>
+{
   const {
     hideMap, category, zoom, longitude, latitude,
   } = props;
 
-  if (hideMap) {
+  if (hideMap)
+  {
     return (
       <div className={`mzw-transaction-detail__map mzw-transaction-detail__map--category-${category}`} />
     );
@@ -37,12 +42,14 @@ const TransactionDetailMap = (props) => {
   );
 };
 
-const TransactionDetailIcon = (props) => {
+const TransactionDetailIcon = (props) =>
+{
   const {
     merchant, counterparty, transaction, category,
   } = props;
 
-  if (merchant && merchant.logo) {
+  if (merchant && merchant.logo)
+  {
     return (
       <img
         className="mzw-transaction-detail__logo"
@@ -52,7 +59,8 @@ const TransactionDetailIcon = (props) => {
     );
   }
 
-  if (counterparty && counterparty.name) {
+  if (counterparty && counterparty.name)
+  {
     return (
       <CategoryIcon
         character={transaction.counterparty.name.charAt(0)}
@@ -69,7 +77,8 @@ const TransactionDetailIcon = (props) => {
   );
 };
 
-const TransactionDetailAddress = (props) => {
+const TransactionDetailAddress = (props) =>
+{
   const {
     address, latitude, longitude,
   } = props;
@@ -86,7 +95,8 @@ const TransactionDetailAddress = (props) => {
   );
 };
 
-const TransactionDetailHeader = (props) => {
+const TransactionDetailHeader = (props) =>
+{
   const {
     transaction, emoji, isGBP,
   } = props;
@@ -111,7 +121,8 @@ const TransactionDetailHeader = (props) => {
   );
 };
 
-const TransactionDetailDate = (props) => {
+const TransactionDetailDate = (props) =>
+{
   const {
     created,
   } = props;
@@ -127,8 +138,10 @@ const TransactionDetailDate = (props) => {
 
 /* eslint-enable react/prop-types  */
 
-class TransactionDetail extends React.PureComponent {
-  render() {
+class TransactionDetail extends React.PureComponent
+{
+  render()
+  {
     const {
       merchant,
       created,
@@ -140,7 +153,8 @@ class TransactionDetail extends React.PureComponent {
     } = this.props.transaction;
     const { transaction } = this.props;
 
-    if (Object.keys(this.props.transaction).length === 0) {
+    if (Object.keys(this.props.transaction).length === 0)
+    {
       return <h2 className="mzw-transaction-detail__empty">Select a transaction</h2>;
     }
 
@@ -151,7 +165,8 @@ class TransactionDetail extends React.PureComponent {
     const isGBP = transaction.local_currency === 'GBP';
     let tags = [];
 
-    if (merchant) {
+    if (merchant)
+    {
       tags = merchant.metadata.suggested_tags ? merchant.metadata.suggested_tags.split(' ').filter(tag => tag !== '') : [];
     }
 

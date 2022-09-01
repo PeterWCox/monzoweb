@@ -4,16 +4,20 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { balanceRequest } from '../../actions';
 import { getHumanCostFromInteger } from '../../helpers';
-import './style.css';
+import './Balance.css';
 
-class Balance extends React.PureComponent {
-  componentDidUpdate(prevProps) {
-    if (prevProps.activeId !== this.props.activeId) {
+class Balance extends React.PureComponent
+{
+  componentDidUpdate(prevProps)
+  {
+    if (prevProps.activeId !== this.props.activeId)
+    {
       this.props.fetchBalance(this.props.activeId);
     }
   }
 
-  render() {
+  render()
+  {
     const {
       balance,
       spentToday,

@@ -2,23 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import AccountSelector from '../AccountSelector';
-import Balance from '../Balance';
-import TransactionDetail from '../TransactionDetail';
-import Transactions from '../Transactions';
-import Map from '../Map';
-import {
+import AccountSelector from '../../components/AccountSelector/AccountSelector';
+import Balance from '../../components/Balance/Balance';
+import TransactionDetail from '../../components/TransactionDetail/TransactionDetail';
+import Transactions from '../../components/Transactions/Transactions';
+import Map from '../../components/Map/Map';
+import
+{
   accountsRequest as fetchAccounts,
   searchFilter as searchFilterAction,
 } from '../../actions';
-import './style.css';
+import './Accounts.css';
 
-class Accounts extends React.Component {
-  componentDidMount() {
+class Accounts extends React.Component
+{
+  componentDidMount()
+  {
     this.props.fetchAccounts();
   }
 
-  render() {
+  render()
+  {
     const {
       updateSearchFilter,
       searchFilter,
@@ -57,6 +61,7 @@ class Accounts extends React.Component {
           )}
         />
         <Route path="/accounts/map" component={Map} />
+        <div>Pots! Coming Soon</div>
       </div>
     );
   }

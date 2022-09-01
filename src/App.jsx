@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import reducer from './reducers';
 import saga from './sagas';
-import { Root } from './components/Root/Root';
+import { Root } from './Pages/Root/Root';
 import './style.css';
 import { createRoot } from 'react-dom/client';
 

@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import { transactionsRequest, setActiveTransaction as setActiveTransactionAction } from '../../actions';
 import { getHumanCostFromInteger } from '../../helpers';
-import Loader from '../Loader';
-import './style.css';
+import Loader from '../Loader/Loader';
+import './Map.css';
 
 const GOOGLE_MAPS_DROP_MARKER_ANIMATION = 2;
 
@@ -14,7 +14,8 @@ const MAP_DEFAULT_ZOOM = 5;
 const MAP_DEFAULT_CENTER_LATITUDE = 51.360878899999996;
 const MAP_DEFAULT_CENTER_LONGITUDE = -0.6569385999999999;
 
-const MapWithAMarker = withScriptjs(withGoogleMap((props) => {
+const MapWithAMarker = withScriptjs(withGoogleMap((props) =>
+{
   const {
     transactions, selectedTransaction, setActiveTransaction,
   } = props;
@@ -24,12 +25,14 @@ const MapWithAMarker = withScriptjs(withGoogleMap((props) => {
       defaultZoom={MAP_DEFAULT_ZOOM}
       defaultCenter={{ lat: MAP_DEFAULT_CENTER_LATITUDE, lng: MAP_DEFAULT_CENTER_LONGITUDE }}
     >
-      {transactions.map((transaction) => {
+      {transactions.map((transaction) =>
+      {
         const {
           merchant,
         } = transaction;
 
-        if (!merchant || merchant.online) {
+        if (!merchant || merchant.online)
+        {
           return null;
         }
 
@@ -87,24 +90,30 @@ const MapWithAMarker = withScriptjs(withGoogleMap((props) => {
 }));
 
 
-class Map extends React.Component {
-  componentDidMount() {
+class Map extends React.Component
+{
+  componentDidMount()
+  {
     const {
       fetching, activeId, fetchTransactions, transactions,
     } = this.props;
 
-    if (transactions.length === 0 && !fetching) {
+    if (transactions.length === 0 && !fetching)
+    {
       fetchTransactions(activeId);
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.activeId !== this.props.activeId) {
+  componentDidUpdate(prevProps)
+  {
+    if (prevProps.activeId !== this.props.activeId)
+    {
       this.props.fetchTransactions(this.props.activeId);
     }
   }
 
-  render() {
+  render()
+  {
     const {
       selectedTransaction, transactions, setActiveTransaction,
     } = this.props;

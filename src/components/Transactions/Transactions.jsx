@@ -3,18 +3,22 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { transactionsRequest } from '../../actions';
-import Transaction from '../Transaction';
-import Loader from '../Loader';
-import './style.css';
+import Transaction from '../Transaction/Transaction';
+import Loader from '../Loader/Loader';
+import './Transactions.css';
 
-class Transactions extends React.Component {
-  componentDidUpdate(prevProps) {
-    if (prevProps.activeId !== this.props.activeId) {
+class Transactions extends React.Component
+{
+  componentDidUpdate(prevProps)
+  {
+    if (prevProps.activeId !== this.props.activeId)
+    {
       this.props.fetchTransactions(this.props.activeId);
     }
   }
 
-  render() {
+  render()
+  {
     const { fetching, transactions } = this.props;
 
     const transactionsClassnames = classNames({
@@ -45,8 +49,10 @@ Transactions.propTypes = {
   transactions: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-const filterTransactions = (transactions, filter) => {
-  if (filter === '') {
+const filterTransactions = (transactions, filter) =>
+{
+  if (filter === '')
+  {
     return transactions;
   }
 

@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import monzoLogo from '../../assets/logo.svg';
-import './style.css';
+import './Logo.css';
 
-class Logo extends React.PureComponent {
-  render() {
+class Logo extends React.PureComponent
+{
+  render()
+  {
     const { large } = this.props;
 
     const logoClassnames = classNames({

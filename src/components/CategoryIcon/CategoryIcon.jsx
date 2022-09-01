@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { nameToHue } from '../../helpers';
-import './style.css';
+import './CategoryIcon.css';
 
-class CategoryIcon extends React.PureComponent {
-  render() {
+class CategoryIcon extends React.PureComponent
+{
+  render()
+  {
     const { category, className, character } = this.props;
 
-    if (character) {
+    if (character)
+    {
       return (
         <div
           className={`mzw-category-icon--character ${className}`}
@@ -20,7 +23,7 @@ class CategoryIcon extends React.PureComponent {
     }
 
     const imgSrc = require(`../../assets/category-icons/${category}.svg`)
-    
+
     const iconClassnames = classNames({
       [className]: className,
       [`mzw-category-icon--${category}-bg`]: true,

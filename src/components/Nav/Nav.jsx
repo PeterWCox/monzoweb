@@ -1,7 +1,7 @@
 import React from 'react';
-import Logo from '../Logo';
-import Link from '../Link';
-import './style.css';
+import Logo from '../Logo/Logo';
+import Link from '../Link/Link';
+import './Nav.css';
 
 export const Nav = () =>
 {

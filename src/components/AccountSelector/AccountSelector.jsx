@@ -3,14 +3,17 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { setActiveAccountId as setActiveAccountIdAction } from '../../actions';
-import './style.css';
+import './AccountSelector.css';
 
-class AccountSelector extends React.PureComponent {
-  getAccountType(account) {
+class AccountSelector extends React.PureComponent
+{
+  getAccountType(account)
+  {
     return account.type.includes('prepaid') ? 'Pre-paid' : 'Current Account';
   }
 
-  render() {
+  render()
+  {
     const { activeId, accounts, setActiveAccountId } = this.props;
     const loading = accounts.length === 0;
 

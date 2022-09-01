@@ -1,9 +1,11 @@
 import React from 'react';
-import Logo from '../Logo';
-import './style.css';
+import Logo from '../../components/Logo/Logo';
+import './Login.css';
 
-class Login extends React.PureComponent {
-  render() {
+class Login extends React.PureComponent
+{
+  render()
+  {
     return (
       <div className="mzw-login">
         <div className="mzw-login__info">

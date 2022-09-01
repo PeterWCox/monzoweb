@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link as RRLink } from 'react-router-dom';
-import './style.css';
+import './Link.css';
 
-class Link extends React.PureComponent {
-  render() {
+class Link extends React.PureComponent
+{
+  render()
+  {
     const {
       external,
       href,
