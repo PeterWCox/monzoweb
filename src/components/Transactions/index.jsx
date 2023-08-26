@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import Transaction from "../Transaction";
+import { Transaction } from "../Transaction";
 import "./style.css";
 
 const Transactions = () => {
@@ -16,8 +16,8 @@ const Transactions = () => {
   return (
     <div className={transactionsClassnames}>
       <ul className="mzw-transactions__list">
-        {transactions2.map((transaction) => (
-          <Transaction key={transaction.id} transaction={transaction} />
+        {transactions2.map((t) => (
+          <Transaction key={t.id} transaction={t} />
         ))}
       </ul>
     </div>
