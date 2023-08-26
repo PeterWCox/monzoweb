@@ -14,15 +14,6 @@ import {
 import "./style.css";
 
 class Accounts extends React.Component {
-  // componentDidMount() {
-  //   this.props.fetchAccounts();
-  // }
-
-  render() {
-    alert("Hello");
-    return <div>Hello</div>;
-  }
-
   render() {
     const { updateSearchFilter, searchFilter } = this.props;
     return (
@@ -33,33 +24,27 @@ class Accounts extends React.Component {
             <AccountSelector />
           </div>
         </div>
-        <Route
-          exact
-          path="/accounts"
-          render={() => (
-            <div className="mzw-accounts__transactions">
-              <div className="mzw-accounts__transactions__list">
-                <label htmlFor="search" className="mzw-accounts__search">
-                  <span aria-hidden className="mzw-accounts__search__text">
-                    Search
-                  </span>
-                  <input
-                    onChange={(event) => updateSearchFilter(event.target.value)}
-                    id="search"
-                    className="mzw-accounts__search__input"
-                    type="text"
-                    placeholder="Search transactions..."
-                    value={searchFilter}
-                  />
-                </label>
-                <Transactions />
-              </div>
-              {/* <div className="mzw-accounts__transactions__detail">
+        <div className="mzw-accounts__transactions">
+          <div className="mzw-accounts__transactions__list">
+            <label htmlFor="search" className="mzw-accounts__search">
+              <span aria-hidden className="mzw-accounts__search__text">
+                Search
+              </span>
+              <input
+                onChange={(event) => updateSearchFilter(event.target.value)}
+                id="search"
+                className="mzw-accounts__search__input"
+                type="text"
+                placeholder="Search transactions..."
+                value={searchFilter}
+              />
+            </label>
+            <Transactions />
+          </div>
+          {/* <div className="mzw-accounts__transactions__detail">
                 <TransactionDetail />
               </div> */}
-            </div>
-          )}
-        />
+        </div>
         <Route path="/accounts/map" component={Map} />
       </div>
     );

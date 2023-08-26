@@ -25,8 +25,7 @@ class Transactions extends React.Component {
     let transactions2 = require("../../data/Budget-1693009890335.json");
 
     //Only show first 10 transactions in array
-
-    // transactions2 = transactions2.slice(0, 10);
+    transactions2 = transactions2.slice(0, 10);
 
     return (
       <div className={transactionsClassnames}>

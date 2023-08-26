@@ -70,6 +70,7 @@ class Transaction extends React.PureComponent {
       id: this.props.transaction.id,
       created: dateTime,
       amount: this.props.transaction.Amount,
+      Name: this.props.transaction.Name,
     };
 
     // return <div>Hello</div>;
@@ -123,8 +124,12 @@ class Transaction extends React.PureComponent {
         className="mzw-transaction"
         tabIndex="0"
       >
+        {/* Icon */}
         <div className="mzw-transaction__logo-container">{iconOrLogo}</div>
+
+        {/* Detail */}
         <div className="mzw-transaction__detail">
+          {/* Title */}
           <div
             className={
               transaction.decline_reason
@@ -134,6 +139,8 @@ class Transaction extends React.PureComponent {
           >
             {title}
           </div>
+
+          {/* Date */}
           <div className="mzw-transaction__info">
             <span>{created}</span>
             {extraInfo && (
@@ -144,15 +151,18 @@ class Transaction extends React.PureComponent {
             )}
           </div>
         </div>
+
+        {/* Amount */}
         <div
           className={`
-        mzw-transaction__amount
-      `}
-          //   className={`
-          //   mzw-transaction__amount
-          //   ${amount.includes("+") ? "mzw-transaction__amount-positive" : ""}
-          //   ${transaction.decline_reason ? "mzw-transaction__detail-decline" : ""}
-          // `}
+            mzw-transaction__amount
+            ${!amount.includes("-") ? "mzw-transaction__amount-positive" : ""}
+            ${
+              transaction.decline_reason
+                ? "mzw-transaction__detail-decline"
+                : ""
+            }
+          `}
         >
           {amount}
         </div>
